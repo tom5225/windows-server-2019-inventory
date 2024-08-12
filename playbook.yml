@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Gather Windows facts
-      win_facts:
+      ansible.windows.setup:
 
     - name: Display OS information
       debug:
