@@ -1,5 +1,5 @@
 ---
- name: Gather basic system information on Windows
+- name: Gather basic system information on Windows
   hosts: all
   tasks:
     - name: Gather Windows facts
