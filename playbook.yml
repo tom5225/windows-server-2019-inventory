@@ -1,13 +1,7 @@
-
 ---
-- name: Gather and display system facts
-  hosts: all
-  gather_facts: yes
+- name: Test connectivity to Windows Server 2019
+  hosts: windows
+  gather_facts: no
   tasks:
-    - name: Show OS version
-      debug:
-        msg: "OS Version: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
-
-    - name: Show total memory
-      debug:
-        msg: "Total Memory: {{ ansible_facts['memtotal_mb'] }} MB"
+    - name: Ping the Windows server
+      win_ping:
