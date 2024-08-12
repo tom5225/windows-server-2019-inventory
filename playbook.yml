@@ -1,7 +1,5 @@
----
 - name: Test connectivity to Windows Server 2019
   hosts: all
-  gather_facts: no
   tasks:
     - name: Ping the Windows server
       win_ping:
