@@ -1,22 +1,13 @@
+
 ---
-- name: Gather basic system information on Windows
+- name: Gather and display system facts
   hosts: all
+  gather_facts: yes
   tasks:
-    - name: Gather Windows facts
-      ansible.windows.setup:
-
-    - name: Display OS information
+    - name: Show OS version
       debug:
-        msg: "Operating System: {{ ansible_facts.os_family }} {{ ansible_facts.os_version }}"
+        msg: "OS Version: {{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
 
-    - name: Display hostname
+    - name: Show total memory
       debug:
-        msg: "Hostname: {{ ansible_facts.hostname }}"
-
-    - name: Display CPU architecture
-      debug:
-        msg: "CPU Architecture: {{ ansible_facts.processor_architecture }}"
-
-    - name: Display total memory
-      debug:
-        msg: "Total Memory: {{ ansible_facts.memtotal_mb }} MB"
+        msg: "Total Memory: {{ ansible_facts['memtotal_mb'] }} MB"
