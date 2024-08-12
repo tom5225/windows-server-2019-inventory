@@ -1,31 +1,22 @@
-- name: Gather system information on Windows
+---
+ name: Gather basic system information on Windows
   hosts: all
   tasks:
     - name: Gather Windows facts
       win_facts:
-      # 收集 Windows 系統資訊
 
     - name: Display OS information
       debug:
-        msg: "Operating System: {{ ansible_facts['os_family'] }} {{ ansible_facts['distribution_version'] }}"
-      # 顯示作業系統名稱與版本
+        msg: "Operating System: {{ ansible_facts.os_family }} {{ ansible_facts.os_version }}"
 
     - name: Display hostname
       debug:
-        msg: "Hostname: {{ ansible_facts['fqdn'] }}"
-      # 顯示主機名稱
+        msg: "Hostname: {{ ansible_facts.hostname }}"
 
     - name: Display CPU architecture
       debug:
-        msg: "CPU Architecture: {{ ansible_facts['processor_64bit'] }}"
-      # 顯示 CPU 架構
+        msg: "CPU Architecture: {{ ansible_facts.processor_architecture }}"
 
     - name: Display total memory
       debug:
-        msg: "Total Memory: {{ ansible_facts['memtotal_mb'] }} MB"
-      # 顯示總記憶體大小
-
-    - name: Display available disk space
-      debug:
-        msg: "Available Disk Space: {{ ansible_facts['disks'][0]['size_available'] // (1024 * 1024) }} MB"
-      # 顯示可用磁碟空間（以 MB 為單位）
+        msg: "Total Memory: {{ ansible_facts.memtotal_mb }} MB"
