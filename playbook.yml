@@ -1,5 +1,8 @@
+---
 - name: Test connectivity to Windows Server 2019
   hosts: all
   tasks:
-    - name: Ping the Windows server
-      win_ping:
+    - name: 輸出主機名稱
+      set_fact:
+        hostname: "{{ansible_hostname}}"
+      
